@@ -1,0 +1,80 @@
+<div id="wrapper" class="wrapper bg-ash">
+
+    <!-- Page Area Start Here -->
+    <div class="dashboard-page-one">
+        <!-- Sidebar Area Start Here -->
+
+        <!-- Sidebar Area End Here -->
+        <div class="dashboard-content-one">
+            <!-- Breadcubs Area Start Here -->
+            <div class="breadcrumbs-area">
+                <h3>Reactive Form</h3>
+                <h3>Students Records</h3>
+                <a routerLink="/reactive-form/add" class="modal-trigger">
+                    Add Student
+                </a>
+                <span class=" pull-right">
+                    <a routerLink="/template-driven-form/list" class="modal-trigger">
+                        Template Driven View
+                    </a>
+                </span>
+            </div>
+            <!-- Breadcubs Area End Here -->
+            <!-- Student Table Area Start Here -->
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>All Students Data</h3>
+                        </div>
+                    </div>
+                   
+                    <div class="table-responsive">
+                        <table class="table display data-table text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Parents Name</th>
+                                    <th>Class</th>
+                                    <th>Roll No.</th>
+                                    <th>Blood Group</th>
+                                    <th>Date Of Birth</th>
+                                    <th>Phone</th>
+                                    <th>E-mail</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let student of studentsList">
+                                    <td>{{student?.firstName}}</td>
+                                    <td>{{student?.lastName}}</td>
+                                    <td>{{student?.parentName}}</td>
+                                    <td>{{student?.class}}</td>
+                                    <td>{{student?.rollNo}}</td>
+                                    <td>{{student?.bloodGroup}}</td>
+                                    <td>{{student?.DOB}}</td>
+                                    <td>{{student?.phone}}</td>
+                                    <td>{{student?.email}}</td>
+                                    <td>
+                                        <a class="dropdown-item" [routerLink]="'/reactive-form/edit/'+student?._id">
+                                            <i class="fas fa-edit text-orange-red"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="dropdown-item" (click)="deleteStudentRecord(student?._id)">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Student Table Area End Here -->
+        </div>
+    </div>
+    <!-- Page Area End Here -->
+</div>
