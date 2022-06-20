@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 
+import { AlertMessageService } from 'src/app/_services/alert-message.service';
 import { DataService } from 'src/app/_services/data.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AddEditReactiveFormComponent implements OnInit {
 
   constructor(private dataService: DataService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService) {
+    private alertMessageService: AlertMessageService) {
     this.formInit();
   }
 
@@ -97,18 +97,18 @@ export class AddEditReactiveFormComponent implements OnInit {
       .subscribe((res: any) => {
         this.resetForm();
 
-        this.toastrService.success('Student record created successfully.', 'Success');
+        this.alertMessageService.addSuccess(res?.msg).show();
       }, (err: any) => {
-        this.toastrService.error(err?.error?.message, 'Error');
+        this.alertMessageService.addError(err?.msg).show();
       });
   }
 
   updateStudentRecord() {
     this.dataService.updateStudentRecord(this.selectedStudentId, this.formGroup.value)
       .subscribe((res: any) => {
-        this.toastrService.success('Student record updated successfully.', 'Success');
+        this.alertMessageService.addSuccess(res?.msg).show();
       }, (err: any) => {
-        this.toastrService.error(err?.error?.message, 'Error');
+        this.alertMessageService.addError(err?.msg).show();
       });
   }
 

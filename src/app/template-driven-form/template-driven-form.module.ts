@@ -5,14 +5,17 @@ import { TemplateDriveFormRouting } from './template-driven-form-routing.module'
 
 import { AddEditTemplateDrivenFormComponent } from './add-edit-template-driven-form/add-edit-template-driven-form.component';
 import { ListTemplateDrivenFormComponent } from './list-template-driven-form/list-template-driven-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    
-  AddEditTemplateDrivenFormComponent,
-  ListTemplateDrivenFormComponent],
+
+    AddEditTemplateDrivenFormComponent,
+    ListTemplateDrivenFormComponent],
   imports: [
     CommonModule,
+
+    FormsModule,
 
     TemplateDriveFormRouting
   ],

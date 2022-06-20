@@ -1,21 +1,13 @@
 <div id="wrapper" class="wrapper bg-ash">
     <!-- Header Menu Area Start Here -->
-    
     <!-- Header Menu Area End Here -->
     <!-- Page Area Start Here -->
     <div class="dashboard-page-one">
-        
         <div class="dashboard-content-one">
             <!-- Breadcubs Area Start Here -->
             <div class="breadcrumbs-area">
-                <h3>Students</h3>
-                
-                   
-                <a   routerLink="/template-driven-form/list" class="modal-trigger" data-toggle="modal" data-target="#sign-up">
-                    Student List
-    </a>
-    
-                 
+                <h3>Students <small> (Template Driven Form)</small></h3>
+                <a routerLink="/template-driven-form/list" class="btn-fill-md text-light bg-dodger-blue"> Student List </a>
             </div>
             <!-- Breadcubs Area End Here -->
             <!-- Admit Form Area Start Here -->
@@ -23,68 +15,79 @@
                 <div class="card-body">
                     <div class="heading-layout1">
                         <div class="item-title">
-                            <h3>Add New Students</h3>
+                            <h3>{{selectedStudentId ? 'Update Student' : 'Create New Student'}} Record</h3>
                         </div>
-                         
                     </div>
-                    <form class="new-added-form">
+                    <form class="new-added-form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>First Name *</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>First Name <span class="error">*</span></label>
+                                <input type="text" placeholder="" class="form-control" name="firstName"
+                                    [(ngModel)]="student.firstName" #firstName="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
+                                <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                                    <div *ngIf="firstName.errors.required"> First Name required </div>
+                                </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Last Name *</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="" class="form-control" name="lastName"
+                                    [(ngModel)]="student.lastName" #lastName="ngModel">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Parents Name *</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>Parents Name</label>
+                                <input type="text" placeholder="" class="form-control" name="parentName"
+                                    [(ngModel)]="student.parentName" #parentName="ngModel">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Date Of Birth *</label>
+                                <label>Date Of Birth</label>
                                 <input type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker"
-                                    data-position='bottom right'>
-                                <i class="far fa-calendar-alt"></i>
+                                    name="DOB" data-position='bottom right' [(ngModel)]="student.DOB" #DOB="ngModel">
+                               
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Roll</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>Roll No. <span class="error">*</span></label>
+                                <input type="text" placeholder="" class="form-control" name="rollNo"
+                                    [(ngModel)]="student.rollNo" #rollNo="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && rollNo.invalid }" required>
+                                <div *ngIf="f.submitted && rollNo.invalid" class="invalid-feedback">
+                                    <div *ngIf="rollNo.errors.required">Roll no. required </div>
+                                </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Blood Group *</label>
-                                <input type="text" placeholder="" class="form-control">
-                            </div>
-                             
-                            <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>E-Mail</label>
-                                <input type="email" placeholder="" class="form-control">
+                                <label>Blood Group</label>
+                                <input type="text" placeholder="" class="form-control" name="bloodGroup"
+                                    [(ngModel)]="student.bloodGroup" #bloodGroup="ngModel">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Enter Class *</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>E-Mail <span class="error">*</span></label>
+                                <input type="email" placeholder="" name="email" class="form-control"
+                                    [(ngModel)]="student.email" #email="ngModel"
+                                    [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
+                                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                    <div *ngIf="email.errors.required"> Email required </div>
+                                </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Enter Section  *</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>Enter Class</label>
+                                <input type="text" placeholder="" name="class" class="form-control"
+                                    [(ngModel)]="student.class" #class="ngModel">
                             </div>
-                            
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Phone</label>
-                                <input type="text" placeholder="" class="form-control">
+                                <label>Phone </label>
+                                <input type="text" placeholder="" name="phone" class="form-control"
+                                    [(ngModel)]="student.phone" #phone="ngModel">
                             </div>
-                            
-                             
                             <div class="col-12 form-group mg-t-8">
-                                <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
-                                <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                                <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
+                                    {{selectedStudentId ? 'Update': 'Create'}} Record
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
             <!-- Admit Form Area End Here -->
-          
         </div>
     </div>
     <!-- Page Area End Here -->

@@ -9,7 +9,6 @@ import { ReactiveFormModule } from './reactive-form/reactive-form.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { ToastrModule } from 'ngx-toastr';
 
     TemplateDrivenFormModule,
     ReactiveFormModule,
-    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

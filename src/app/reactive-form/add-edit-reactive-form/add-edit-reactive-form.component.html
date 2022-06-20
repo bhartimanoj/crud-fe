@@ -8,7 +8,7 @@
             <!-- Breadcubs Area Start Here -->
             <div class="breadcrumbs-area">
                 <h3>Add Students <small> (Reactive Form)</small></h3>
-                <a routerLink="/reactive-form/list" class="btn-fill-md text-light bg-dodger-blue" >
+                <a routerLink="/reactive-form/list"  class="btn-fill-md text-light bg-dodger-blue">
                     Student List
                 </a>
             </div>
@@ -24,48 +24,48 @@
                     <form class="new-added-form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>First Name *</label>
+                                <label>First Name <span class="error">*</span></label>
                                 <input type="text" placeholder="Enter First Name" class="form-control"
                                     formControlName="firstName">
-                                <div *ngIf="submitted && formControls.firstName.errors">
-                                    <span *ngIf="formControls.firstName.errors.required">First name required</span>
+                                <div class="error" *ngIf="submitted && formControls.firstName.errors">
+                                    <span  *ngIf="formControls.firstName.errors.required">First name required</span>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Last Name *</label>
+                                <label>Last Name </label>
                                 <input type="text" placeholder="" class="form-control" formControlName="lastName">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Parents Name *</label>
+                                <label>Parents Name </label>
                                 <input type="text" placeholder="" class="form-control" formControlName="parentName">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Date Of Birth *</label>
+                                <label>Date Of Birth </label>
                                 <input type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker"
                                     data-position='bottom right' formControlName="DOB">
-                                
+                                 
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Roll No.</label>
+                                <label>Roll No. <span class="error">*</span></label>
                                 <input type="text" placeholder="" class="form-control" formControlName="rollNo">
-                                <div *ngIf="submitted && formControls.rollNo.errors">
+                                <div class="error" *ngIf="submitted && formControls.rollNo.errors">
                                     <span *ngIf="formControls.rollNo.errors.required">Roll no. required</span>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Blood Group *</label>
+                                <label>Blood Group </label>
                                 <input type="text" placeholder="" class="form-control" formControlName="bloodGroup">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>E-Mail</label>
+                                <label>E-Mail <span class="error">*</span></label>
                                 <input type="email" placeholder="" class="form-control" formControlName="email">
-                                <div *ngIf="submitted && formControls.email.errors">
+                                <div class="error" *ngIf="submitted && formControls.email.errors">
                                     <span *ngIf="formControls.email.errors.required">Email required</span>
                                     <span *ngIf="formControls.email.errors.email">Invalid email</span>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Enter Class *</label>
+                                <label>Enter Class </label>
                                 <input type="text" placeholder="" class="form-control" formControlName="class">
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
@@ -74,7 +74,8 @@
                             </div>
                             <div class="col-12 form-group mg-t-8">
                                 <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
-                                    {{selectedStudentId ? 'Update': 'Create'}} Record </button>
+                                    {{selectedStudentId ? 'Update': 'Create'}} Record
+                                </button>
                             </div>
                         </div>
                     </form>

@@ -1,24 +1,17 @@
 <div id="wrapper" class="wrapper bg-ash">
-    
     <!-- Page Area Start Here -->
     <div class="dashboard-page-one">
         <!-- Sidebar Area Start Here -->
-         
         <!-- Sidebar Area End Here -->
         <div class="dashboard-content-one">
             <!-- Breadcubs Area Start Here -->
             <div class="breadcrumbs-area">
-                <h3>Template Driven Form</h3>
-                <h3>Students Records</h3>
-                 
-                    
-                      <a   routerLink="/template-driven-form/add" class="modal-trigger"    >
-                                    Add Student
-                    </a>
-                   <span class=" pull-right"> <a   routerLink="/reactive-form/list"  class="modal-trigger"   >
-                       Reactive Form View
-                     </a>
-                         </span>
+                
+                <h3>Students Records <small> (Template Driven Form)</small></h3>
+                <a routerLink="/template-driven-form/add" class="btn-fill-md text-light bg-dodger-blue"> Add Student </a>
+                <span class="pull-right">
+                    <a routerLink="/reactive-form/list"  class="btn-fill-lmd radius-4 text-light bg-true-v"> Reactive Form View </a>
+                </span>
             </div>
             <!-- Breadcubs Area End Here -->
             <!-- Student Table Area Start Here -->
@@ -28,23 +21,17 @@
                         <div class="item-title">
                             <h3>All Students Data</h3>
                         </div>
-                       
                     </div>
-                    
+                     
                     <div class="table-responsive">
                         <table class="table display data-table text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>
-                                       Roll 
-                                       
-                                    </th>
-                                    
-                                    <th>Name</th>
-                                   
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Parents Name</th>
                                     <th>Class</th>
-                                    <th>Section</th>
-                                    <th>Parents</th>
+                                    <th>Roll No.</th>
                                     <th>Blood Group</th>
                                     <th>Date Of Birth</th>
                                     <th>Phone</th>
@@ -54,34 +41,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let student of studentsList">
+                                    <td>{{student?.firstName}}</td>
+                                    <td>{{student?.lastName}}</td>
+                                    <td>{{student?.parentName}}</td>
+                                    <td>{{student?.class}}</td>
+                                    <td>{{student?.rollNo}}</td>
+                                    <td>{{student?.bloodGroup}}</td>
+                                    <td>{{student?.DOB}}</td>
+                                    <td>{{student?.phone}}</td>
+                                    <td>{{student?.email}}</td>
                                     <td>
-                                        
-                                          
-                                             #0021 
-                                         
+                                        <a class="dropdown-item"
+                                            [routerLink]="'/template-driven-form/edit/'+student?._id">
+                                            <i class="fas fa-edit text-orange-red"></i>
+                                        </a>
                                     </td>
-                                     <td>Mark Willy</td>
-                                   
-                                    <td>2</td>
-                                    <td>A</td>
-                                    <td>Jack Sparrow </td>
-                                    <td>A+</td>
-                                    <td>02/05/2001</td>
-                                    <td>+ 123 9988568</td>
-                                    <td>kazifahim93@gmail.com</td>
-                                    <td> <a class="dropdown-item" routerLink="/template-driven-form/edit/1" ><i class="fas fa-edit text-orange-red"></i> </a>  </td>
-                                    <td> <a class="dropdown-item" ><i class="fas fa-trash  "></i> </a></td>
-                                </tr> 
+                                    <td>
+                                        <a class="dropdown-item" (click)="deleteStudentRecord(student?._id)">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <!-- Student Table Area End Here -->
-          
         </div>
     </div>
     <!-- Page Area End Here -->
 </div>
-   

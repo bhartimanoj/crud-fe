@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToastrService } from 'ngx-toastr';
-
+import { AlertMessageService } from 'src/app/_services/alert-message.service';
 import { DataService } from 'src/app/_services/data.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class ListReactiveFormComponent implements OnInit {
   studentsList: Array<any> = [];
 
   constructor(private dataService: DataService,
-    private toastrService: ToastrService) { }
+    private alertMessageService: AlertMessageService) { }
 
   ngOnInit(): void {
     this.retrieveStudentsList()
@@ -32,9 +31,9 @@ export class ListReactiveFormComponent implements OnInit {
     this.dataService.deleteStudentRecord(id)
       .subscribe((res: any) => {
         this.retrieveStudentsList();
-        this.toastrService.success('Student record deleted successfully.', 'Success');
+        this.alertMessageService.addSuccess(res?.msg).show();
       }, (err: any) => {
-        this.toastrService.error(err?.error?.message, 'Error');
+        this.alertMessageService.addError(err?.msg).show();
       });
   }
 
