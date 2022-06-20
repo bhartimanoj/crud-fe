@@ -7,8 +7,8 @@
         <div class="dashboard-content-one">
             <!-- Breadcubs Area Start Here -->
             <div class="breadcrumbs-area">
-                <h3>Students</h3>
-                <a routerLink="/reactive-form/list" class="modal-trigger" data-toggle="modal" data-target="#sign-up">
+                <h3>Add Students <small> (Reactive Form)</small></h3>
+                <a routerLink="/reactive-form/list" class="btn-fill-md text-light bg-dodger-blue" >
                     Student List
                 </a>
             </div>
@@ -43,7 +43,7 @@
                                 <label>Date Of Birth *</label>
                                 <input type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker"
                                     data-position='bottom right' formControlName="DOB">
-                                <i class="far fa-calendar-alt"></i>
+                                
                             </div>
                             <div class="col-xl-3 col-lg-6 col-12 form-group">
                                 <label>Roll No.</label>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-12 form-group mg-t-8">
                                 <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">
-                                    {{selectedStudentId ? 'Update': 'Çreate'}} Record </button>
+                                    {{selectedStudentId ? 'Update': 'Create'}} Record </button>
                             </div>
                         </div>
                     </form>
